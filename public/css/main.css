@@ -1,0 +1,14 @@
+.auth-links {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  .auth-links a {
+    margin-left: 10px;
+    padding: 5px 10px;
+    color: #000;
+  }
+  
