@@ -3,11 +3,11 @@ const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 
 exports.getLogin = async (req, res, next) => {
-  res.render("login", {
+  res.render("auth/login", {
     title: "Login",
     authError: req.flash("loginError")[0],
     validationErrors: req.flash("validationErrors"),
-    isLogged: false,
+    isLogged: req.session.userId,
   });
 };
 exports.logIn = async (req, res, next) => {
@@ -17,18 +17,18 @@ exports.logIn = async (req, res, next) => {
     //check if user and correct password
     if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
       req.flash("loginError", "incorrect email or password"); // will be added to the flash messages
-      return res.render("login", {
+      return res.render("auth/login", {
         title: "Login",
         authError: req.flash("loginError")[0], // pass the flash message to the view
-        validationErrors:[],
-        isLogged:false
+        validationErrors: [],
+        isLogged: false,
       });
     }
 
     //set session
-    req.session.userId = user._id;
+    req.session.userId = String(user._id); // to make sure that the session is a string
 
-    res.render("index", { title: "Home", isLogged: true });
+    res.redirect("/");
   } else {
     req.flash("validationErrors", validationResult(req).array());
     res.redirect("/login");
@@ -36,7 +36,7 @@ exports.logIn = async (req, res, next) => {
 };
 
 exports.getSignUp = async (req, res, next) => {
-  res.render("signup", {
+  res.render("auth/signup", {
     title: "Sign Up",
     validationErrors: req.flash("validationErrors"),
     isLogged: false,

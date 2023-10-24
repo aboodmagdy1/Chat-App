@@ -5,8 +5,8 @@ const router = express.Router();
 
 
 
-router.get('/',(req,res,next)=>{
-    res.render('index',{title:'Home',isLogged:true})
+router.get('/',(req, res, next) => {
+  res.render("index", { title: "Home", isLogged: req.session.userId });
 })
 
 

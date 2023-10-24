@@ -16,7 +16,7 @@ module.exports = (app) => {
       secret: "this is my secret used to hash the session id",
       saveUninitialized: false, // tell the session to save the session data only if there is a change in the session data
       cookie: {
-        maxAge: 1 * 60 * 60 * 100, //1 hour
+        maxAge: 1 * 60 * 60 * 1000, //1 hour
       },
       store: store,
     })

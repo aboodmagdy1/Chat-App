@@ -1,0 +1,38 @@
+<style>
+  img {
+    max-width: 100%;
+    max-height: 40%;
+    border-radius: 40%;
+  }
+  .col {
+    margin-top: 4rem;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-12 col-md-6">
+      <img
+        src="/imgs/<%= userImage%>"
+        alt="`this is <%=  username  %> photo`"
+      />
+    </div>
+    <div class="col col-12 col-md-6">
+      <h3><%= username %></h3>
+    </div>
+
+    <% if (!isOwner) { %>
+     <div>
+      <% if (isFrinds) { %>
+       is Frinds
+      <% }else if (isSentRequest){%>
+        i'm sent a requst for this user 
+        <% } else if(isRecivedRequest){ %>
+          i'm recivet a requst from this user
+        <% } else{ %>
+          add 
+          <% } %>
+    </div>
+    <% } %>
+  </div>
+</div>
