@@ -20,6 +20,7 @@ app.set("layout", "./layouts/main");
 const homeRouter = require("./routes/homeRoutes.js");
 const authRouter = require("./routes/authRoutes");
 const profileRouter =require('./routes/profileRoutes.js')
+const friendsRouter =require('./routes/friendRoutes.js')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // to convert the body from json format to js object
@@ -28,8 +29,9 @@ connectToDB();
 sessionConfigration(app);
 
 app.use("/", homeRouter);
-app.use("/profile", profileRouter);
 app.use("/", authRouter);
+app.use("/profile", profileRouter);
+app.use("/friend", friendsRouter);
 
 //unhandled routes 
 app.all('*', (req, res, next) => {

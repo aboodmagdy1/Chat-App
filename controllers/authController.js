@@ -25,8 +25,10 @@ exports.logIn = async (req, res, next) => {
       });
     }
 
-    //set session
+    //set session and other data that i will neet it in the frineds functions
     req.session.userId = String(user._id); // to make sure that the session is a string
+    req.session.name = user.username;
+    req.session.image = user.image;
 
     res.redirect("/");
   } else {
