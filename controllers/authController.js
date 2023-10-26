@@ -78,6 +78,7 @@ exports.isAuth = async (req, res, next) => {
 };
 exports.notAuth = async (req, res, next) => {
   if (req.session.userId) {
+
     res.redirect("/");
   } else {
     next();

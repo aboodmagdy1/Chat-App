@@ -19,6 +19,7 @@ exports.getProfile = asyncHandler(async (req, res, next) => {
       friendId: user.id,
       userName: user.username,
       userImage: user.image,
+      friendRequests : req.friendRequests ,
       //we have 4 diffrent senarios for get profile page and buttons
       //1- if the user is owner if the profile page
       isOwner: id === req.session.userId,

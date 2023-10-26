@@ -21,14 +21,16 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  //this is the requests that i will recive from other users
   friendRequests: {
     type: [{ name: String, id: String }],
     default: [],
   },
-  sentRequests:{
-    type:[{name:String,id:String}],
+  //this is the requests that i will send to other users
+  sentRequests: {
+    type: [{ name: String, id: String }],
     default: [],
-  }
+  },
 });
 
 userSchema.pre("save", async function (next) {

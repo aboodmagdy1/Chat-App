@@ -1,15 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand text-primary" href="/">Friends Chat</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -30,12 +22,28 @@
         <li class="nav-item">
           <a href="/profile" class="nav-link"> MyProfile </a>
         </li>
+        <li class="mr-3">
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="friendRequestsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 40%">
+              <i><img src="/imgs/add-friend.png" alt="" style="height: 25px" /></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="friendRequestsDropdown">
+              <% if (friendRequests.length ==0 ) { %>
+               <span style="color: red;">No Requests</span>
+              <% } %>
+              <% if (friendRequests) { %> <% for(let request of friendRequests){ %>
+              <a class="dropdown-item" href="/profile/<%= request.id %>"><%= request.name %></a>
+              <% } %> <% } %>
+            </div>
+          </div>
+        </li>
         <li class="nav-item">
           <form action="/logout" method="post">
             <input type="submit" value="Logout" class="btn btn-danger" />
           </form>
         </li>
       </ul>
+
       <% } else { %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
