@@ -2,7 +2,7 @@
   <br>
   <a href="https://lakshman-natours.herokuapp.com/"><img src="https://github.com/aboodmagdy1/Frinds-Chat-/blob/main/public/imgs/chat-app.png" alt="Natours" width="200"></a>
   <br>
-  Advanced Real-time Chat App
+  Advanced SSR Real-time Chat App
 
   <br>
 </h1>
@@ -13,8 +13,11 @@
 
 * Authentication and Authorization
   - Sign up, Log in, Logout.
-* Real-time Notifications
-  - 
+* Real-time Notifications for Friend Requests 
+   - Add Friend 
+* Friend requests 
+  - Accept , Reject , Cancel Request 
+  - Delete Friend 
 
 
 ## Build With 🏗️
@@ -22,6 +25,7 @@
 * [Express](http://expressjs.com/) - The web framework used
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
+* [Bootstrap ](https://www.bootstrap.com) - Bootstrap 
 
 
 <h5>Still in progress</h5>
