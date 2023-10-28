@@ -13,6 +13,8 @@
 
 * Authentication and Authorization
   - Sign up, Log in, Logout.
+* Real-time Notifications
+  - 
 
 
 ## Build With 🏗️

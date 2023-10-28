@@ -1,4 +1,4 @@
-const User = require("../models/userModel");
+const {User} = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 
 //@desc to get the profile of a specific user or me
@@ -11,7 +11,7 @@ exports.getProfile = asyncHandler(async (req, res, next) => {
   if (user) {
     return res.render("user/profile", {
       title: user.username,
-      isLogged: true,
+      isLogged: req.session.userId,
       //the following data  i will need it in the profile page with frind functions
       myId: req.session.userId,
       myName: req.session.name,

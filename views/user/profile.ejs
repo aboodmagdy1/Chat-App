@@ -13,34 +13,65 @@
 <div class="container">
   <div class="row">
     <div class="col col-12 col-md-6">
-      <img src="/imgs/<%= userImage%>" alt="`this is <%=  userName  %> photo`" />
+      <img
+        src="/imgs/<%= userImage%>"
+        alt="`this is <%=  userName  %> photo`"
+      />
       <h3><%= userName %></h3>
     </div>
     <div class="col col-12 col-md-6">
       <% if (!isOwner) { %>
-        <form method="post">
-          <!-- we need 6 information to deal with different senarious  -->
-          <input type="hidden" name="myId" value="<%= myId %>" />
-          <input type="hidden" name="myName" value="<%= myName %>" />
-          <input type="hidden" name="myImage" value="<%= myImage %>" />
-          <input type="hidden" name="friendId" value="<%= friendId %>" />
-          <input type="hidden" name="userName" value="<%= userName %>" />
-          <input type="hidden" name="userImage" value="<%= userImage %>" />
-          <% if (isFrinds) { %>
-          <input type="submit" value="Delete Friend " class="btn btn-danger" formaction="/friend/delete" />
-          <% }else if (isSentRequest){%>
-          <input type="submit" value="Cancel  Request " class="btn btn-danger" formaction="/friend/cancel" />
-          <% } else if(isRecivedRequest){ %>
-          <input type="submit" value="Accept Request  " class="btn btn-success" formaction="/friend/accept" />
-          <input type="submit" value="Reject Request " class="btn btn-danger" formaction="/friend/reject" />
-          <% } else{ %>
-          <input type="submit" value="Add Friend " class="btn btn-primary" formaction="/friend/add" />
-          <% } %>
-        </form>
-    
+      <form method="post" id="friendsForm">
+        <!-- we need 6 information to deal with different senarious  -->
+        <input type="hidden" name="myId"id="myId"  value="<%= myId %>" />
+        <input type="hidden" name="myName" id="myName" value="<%= myName %>" />
+        <input type="hidden" name="myImage" id="myImage" value="<%= myImage %>" />
+        <input type="hidden" name="friendId" id="friendId" value="<%= friendId %>" />
+        <input type="hidden" name="userName" id="friendName" value="<%= userName %>" />
+        <input type="hidden" name="userImage" id="friendImage" value="<%= userImage %>" />
+        <% if (isFrinds) { %>
+        <input
+          type="submit"
+          value="Delete Friend "
+          class="btn btn-danger"
+          formaction="/friend/delete"
+        />
+        <% }else if (isSentRequest){%>
+        <input
+          type="submit"
+          value="Cancel  Request "
+          class="btn btn-danger"
+          formaction="/friend/cancel"
+        />
+        <% } else if(isRecivedRequest){ %>
+        <input
+          type="submit"
+          value="Accept Request  "
+          class="btn btn-success"
+          formaction="/friend/accept"
+        />
+        <input
+          type="submit"
+          value="Reject Request "
+          class="btn btn-danger"
+          formaction="/friend/reject"
+        />
+        <% } else{ %>
+        <!-- this buttun to emit the sendFriendRequest event to socket in server -->
+        <input type="submit" id="add_btn" value="Add Friend " class="btn btn-primary" />
         <% } %>
+      </form>
+
+      <% } %>
     </div>
-
-
   </div>
 </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/sockets/init.js"></script>
+
+<% if (!isOwner && !isFrinds && !isSentRequest && !isRecivedRequest) { %>
+  <!-- if the two users is not frineds and this profile page is not the owner profile page -->
+  <!-- so we can do the functionality of add friends  -->
+<script src="/js/sockets/friend.js"></script>
+
+<% } %>

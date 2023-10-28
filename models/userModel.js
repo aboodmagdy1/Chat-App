@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const asyncHandler = require('express-async-handler')
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -38,4 +39,25 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-module.exports = mongoose.model("User", userSchema);
+const sendFriendRequest = asyncHandler(async (data)=>{
+  //if i'm send frind req to a user
+  // 1- add this user data to my sentRequests
+ const seSentRequest =   User.updateOne(
+    { _id: data.myId },
+    {
+      $push: {
+        sentRequests: { id: data.friendId, name: data.userName },
+      },
+    }
+  );
+
+  // 2- add my data to this user friendRequests
+  const setFriendRequests =  User.updateOne(
+    { _id: data.friendId },
+    { $push: { friendRequests: { id: data.myId, name: data.myName } } }
+  );
+  return await Promise.all([seSentRequest, setFriendRequests])
+
+}) 
+const User = mongoose.model("User", userSchema);
+module.exports = {User, sendFriendRequest}

@@ -7,6 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if (isLogged) { %>
+        <input type="hidden" id="userId" value="<%= isLogged %>">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home</a>
@@ -24,10 +25,10 @@
         </li>
         <li class="mr-3">
           <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="friendRequestsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 40%">
+            <button class="btn btn-info dropdown-toggle" type="button" id="friendRequestsDropdown" data-toggle="dropdown" id aria-haspopup="true" aria-expanded="false" style="border-radius: 40%">
               <i><img src="/imgs/add-friend.png" alt="" style="height: 25px" /></i>
             </button>
-            <div class="dropdown-menu" aria-labelledby="friendRequestsDropdown">
+            <div id="friendRequests" class="dropdown-menu" aria-labelledby="friendRequestsDropdown">
               <% if (friendRequests.length ==0 ) { %>
                <span style="color: red;">No Requests</span>
               <% } %>

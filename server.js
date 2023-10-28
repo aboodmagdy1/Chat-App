@@ -9,7 +9,7 @@ const connectToDB = require("./config/database");
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
 //models
-const User = require("./models/userModel.js");
+const {User} = require("./models/userModel.js");
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -29,7 +29,7 @@ app.use(express.json()); // to convert the body from json format to js object
 
 connectToDB();
 sessionConfigration(app);
-//a middleware to set  friendRequest in all pages that will render 
+//a middleware to set  friendRequest in all pages that will render
 app.use((req, res, next) => {
   if (req.session.userId) {
     User.findById(req.session.userId)
@@ -64,6 +64,12 @@ app.use((error, req, res, next) => {
     errMsg: error.message,
     friendRequests: req.friendRequests,
   });
+});
+
+//io
+require("./sockets/friendSocket.js")(io); //if i add this line to the next middleware it will still for another connection not the frist connection and this is error
+io.on("connection", (socket) => {
+  require("./sockets/initSocket.js")(socket);
 });
 
 httpServer.listen(3000, () => {
