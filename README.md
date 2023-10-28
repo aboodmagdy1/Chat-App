@@ -25,7 +25,7 @@
 * [Express](http://expressjs.com/) - The web framework used
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
-* [Bootstrap ](https://www.bootstrap.com) - Bootstrap 
+* [Bootstrap ](https://getbootstrap.com/) - Bootstrap 
 
 
 <h5>Still in progress</h5>
