@@ -1,12 +1,12 @@
 // this script for handel the connectons from the server
 
-const { sendFriendRequest } = require("../models/userModel");
+const { sendFriendRequest, getMyFriends } = require("../models/userModel");
 // i will make the socket.io send the frined request by it self
 //1) user-1 ckick add Friend button to add user-2 then the sendFriendRequest is emitted
 //2) sendFriendRequest() to make the sendFriendRequest logic then
 // ----inform user1 that his req is sent and inform user-2 that he as a new friend req
 
-module.exports = function (io) {
+module.exports = (io) => {
   io.on("connection", (socket) => {
     socket.on("sendFriendRequest", (data) => {
       // this is common event so it'will  be handled in init.js
@@ -24,6 +24,17 @@ module.exports = function (io) {
         .catch((error) => {
           socket.emit("requestFailed");
         });
+    });
+
+    //get Online Frineds and send it to home socket 
+    socket.on("getOnlineFriends", (id) => {
+      getMyFriends(id)
+        .then((friends) => {
+          let onlineFriends = friends.filter(
+            friend => io.onlineUsers[friend.id]
+            );
+          socket.emit('onlineFriends',onlineFriends)
+        })
     });
   });
 };

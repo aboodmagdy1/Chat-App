@@ -1,14 +1,13 @@
 // in this fiel i will initialize the socket.io connection in any page i render  (front socket)
 //elements 
 const dropdownBtn = document.getElementById('friendRequestsDropdown')
-
-
+let id = document.getElementById("userId").value;
 //i will use it to make a reat-time notification
 const socket = io();
 
 socket.on("connect", () => {
-  let id = document.getElementById("userId").value;
   socket.emit("joinNotificationsRoom", id);
+  socket.emit('isOnline',id)
 });
 
 socket.on("newFriendRequest", (data) => {

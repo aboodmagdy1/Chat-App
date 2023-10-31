@@ -8,8 +8,12 @@ const connectToDB = require("./config/database");
 
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
+
+//online users
+io.onlineUsers = {};
+
 //models
-const {User} = require("./models/userModel.js");
+const { User } = require("./models/userModel.js");
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -68,9 +72,7 @@ app.use((error, req, res, next) => {
 
 //io
 require("./sockets/friendSocket.js")(io); //if i add this line to the next middleware it will still for another connection not the frist connection and this is error
-io.on("connection", (socket) => {
-  require("./sockets/initSocket.js")(socket);
-});
+require("./sockets/initSocket.js")(io);
 
 httpServer.listen(3000, () => {
   console.log("server is running on port 3000");

@@ -59,5 +59,10 @@ const sendFriendRequest = asyncHandler(async (data)=>{
   return await Promise.all([seSentRequest, setFriendRequests])
 
 }) 
+
+const getMyFriends = asyncHandler(async(myId)=>{
+  let data =await  User.findById(myId,{friends:true})
+  return data.friends
+})
 const User = mongoose.model("User", userSchema);
-module.exports = {User, sendFriendRequest}
+module.exports = {User, sendFriendRequest,getMyFriends}
