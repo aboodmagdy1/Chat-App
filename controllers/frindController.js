@@ -1,6 +1,6 @@
-const {User} = require("../models/userModel");
+const { User } = require("../models/userModel");
+const Chat = require("../models/chatModel");
 const asyncHandler = require("express-async-handler");
-
 
 // @desc cancel  frind request that i send  to this user
 // @route POST /frind/cancel
@@ -31,13 +31,21 @@ exports.cancelRequest = asyncHandler(async (req, res, next) => {
 // @access protected
 exports.acceptRequst = asyncHandler(async (req, res, next) => {
   const { myId, myName, myImage, friendId, userName, userImage } = req.body;
+  let newChat = await Chat.create({
+    users: [myId, friendId],
+  }); //create a new chat between me and the user an pass the id
   //if i accept frind req from a user
   //1- add  this user to my frinds  and delete him from my friendRequests
   await User.updateOne(
     { _id: myId },
     {
       $push: {
-        friends: { id: friendId, name: userName, image: userImage },
+        friends: {
+          id: friendId,
+          name: userName,
+          image: userImage,
+          chatId: newChat._id,
+        },
       },
       $pull: {
         friendRequests: { id: friendId },
@@ -48,7 +56,14 @@ exports.acceptRequst = asyncHandler(async (req, res, next) => {
   await User.updateOne(
     { _id: friendId },
     {
-      $push: { friends: { id: myId, name: myName, image: myImage } },
+      $push: {
+        friends: {
+          id: myId,
+          name: myName,
+          image: myImage,
+          chatId: newChat._id,
+        },
+      },
       $pull: { sentRequests: { id: myId } },
     }
   );
@@ -96,10 +111,7 @@ exports.deleteFriend = asyncHandler(async (req, res, next) => {
     }
   );
   //2- delet my data form frinds of the user(friend)
-  await User.updateOne(
-    { _id: friendId },
-    { $pull: { friends: { id: myId } } }
-  );
+  await User.updateOne({ _id: friendId }, { $pull: { friends: { id: myId } } });
 
   res.redirect("/profile/" + friendId);
 });

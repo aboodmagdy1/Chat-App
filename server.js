@@ -26,6 +26,7 @@ const homeRouter = require("./routes/homeRoutes.js");
 const authRouter = require("./routes/authRoutes");
 const profileRouter = require("./routes/profileRoutes.js");
 const friendsRouter = require("./routes/friendRoutes.js");
+const chatRouter = require("./routes/chatRoutes.js");
 
 //middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,6 +53,7 @@ app.use("/", homeRouter);
 app.use("/", authRouter);
 app.use("/profile", profileRouter);
 app.use("/friend", friendsRouter);
+app.use("/chat", chatRouter);
 
 //unhandled routes
 app.all("*", (req, res, next) => {

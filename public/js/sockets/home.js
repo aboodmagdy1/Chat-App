@@ -5,7 +5,7 @@ socket.on("onlineFriends", (friends) => {
 
   if (friends.length === 0) {
     onlineFriendsDiv.innerHTML = `
-      <p class="alert alert-danger">You don't have any online friends.</p>
+      <p class="alert alert-info">You don't have any online friends.</p>
     `;
   } else {
     let html = `
@@ -18,7 +18,7 @@ socket.on("onlineFriends", (friends) => {
             <img src="/imgs/${friend.image}" class="card-img-top" alt="Friend Image">
             <div class="card-body">
               <h5 class="card-title"><a href="/profile/${friend.id}">${friend.name}</a></h5>
-              <a href="#" class="btn btn-primary">Chat</a>
+              <a href="/chat/${friend.chatId}" class="btn btn-primary">Chat</a>
             </div>
           </div>
         </div>

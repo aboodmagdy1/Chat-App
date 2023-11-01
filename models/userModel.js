@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
         name: String,
         image: String,
         id: String,
+        chatId:String
       },
     ],
     default: [],
