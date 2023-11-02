@@ -1,0 +1,30 @@
+<!-- friends.ejs -->
+
+<!-- Include your header and navigation bar here -->
+
+<div class="container">
+    <h1>My Friends</h1>
+    
+  
+    <div class="row">
+        <% if (friends.length>0) { %>
+            <% friends.forEach(friend => { %>
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                    <img src="/imgs/<%= friend.image %>" class="card-img-top" alt="<%= friend.name %>">
+                    <div class="card-body">
+                      <a href="/profile/<%= friend.id %>"><h5 class="card-title" "><%= friend.name %></h5></a>
+                      <a href="/chat/<%= friend.chatId %>" class="btn btn-success">Chat</a>
+
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+        <% }else{ %>
+            <p class="alert alert-info"> You Dont Have Any Friends</p>
+            <% } %>
+    </div>
+  </div>
+  
+  <!-- Include your footer here -->
+  

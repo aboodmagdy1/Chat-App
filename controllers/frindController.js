@@ -1,11 +1,28 @@
 const { User } = require("../models/userModel");
-const {Chat} = require("../models/chatModel");
+const { Chat } = require("../models/chatModel");
 const asyncHandler = require("express-async-handler");
+
+// @desc my all friends
+// @reoute friend/all
+// @access protected
+exports.getMyFriends = asyncHandler(async (req, res, next) => {
+  const myId = req.session.userId;
+  const myFriends = await User.findOne({ _id: myId }, { friends: true }); // the returned value is frinds and document id
+  if (myFriends) {
+    res.render("user/friends", {
+      title: "My Friends",
+      isLogged: req.session.userId,
+      friendRequests: req.friendRequests,
+      friends: myFriends.friends,
+    });
+  } else {
+    return next(new Error("No Friends Found "));
+  }
+});
 
 // @desc cancel  frind request that i send  to this user
 // @route POST /frind/cancel
 // @access protected
-
 exports.cancelRequest = asyncHandler(async (req, res, next) => {
   const { myId, myName, myImage, friendId, userName, userImage } = req.body;
   //1- delete the user data from my sentRequests

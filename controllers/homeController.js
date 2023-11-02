@@ -6,6 +6,6 @@ exports.getHome = asyncHandler(async (req, res, next) => {
   res.render("index", {
     title: "Home",
     isLogged: req.session.userId,
-    friendRequests: req.friendRequests,
+    friendRequests: req.friendRequests
   });
 });
