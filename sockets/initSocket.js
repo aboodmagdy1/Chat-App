@@ -11,8 +11,5 @@ module.exports = (io) => {
         io.onlineUsers[id] = false;
       });
     });
-
-
-    
   });
 };

@@ -1,66 +1,7 @@
-<style>
-    .row {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .col {
-      padding: 10px;
-    }
-  
-    .col-12 {
-      width: 100%;
-    }
-  
-    .col-md-3 {
-      width: 25%;
-    }
-  
-    .col-md-9 {
-      width: 75%;
-    }
-  
-    .user-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  
-    .messages-container {
-      border: 1px solid #ccc;
-      padding: 10px;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-  
-    .messages-form {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-  
-    #message {
-      width: 70%;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    .btn-success {
-      padding: 5px 10px;
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+<link rel="stylesheet" href="/css/chat.css" />
 
 <div class="row">
+  <input type="hidden" id="chatId" value="<%= chatId %>" />
   <div class="col col-12 col-md-3">
     <img src="/imgs/<%=friendData.image%>" alt="" class="user-image" /> <br />
     <a href="/profile/<%= friendData.id %>"> <%= friendData.username %></a>
@@ -73,10 +14,11 @@
     </div>
     <div class="messages-form">
       <textarea id="message"></textarea>
-      <button class="btn btn-success">Send</button>
+      <button class="btn btn-success" id="sendBtn">Send</button>
     </div>
   </div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/sockets/init.js"></script>
+<script src="/js/sockets/chat.js"></script>

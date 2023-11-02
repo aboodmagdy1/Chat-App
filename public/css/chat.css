@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.col {
+  padding: 20px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.messages-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.message-bubble {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 20px;
+  word-wrap: break-word;
+}
+
+.my-message {
+  background-color: #DCF8C6; /* Your message bubble color */
+  align-self: flex-end;
+}
+
+.friend-message {
+  background-color: #E1E1E1; /* Friend's message bubble color */
+  align-self: flex-start;
+}
+
+.messages-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#message {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#sendBtn {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#sendBtn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

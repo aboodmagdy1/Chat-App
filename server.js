@@ -75,6 +75,7 @@ app.use((error, req, res, next) => {
 //io
 require("./sockets/friendSocket.js")(io); //if i add this line to the next middleware it will still for another connection not the frist connection and this is error
 require("./sockets/initSocket.js")(io);
+require("./sockets/chatSocket.js")(io);
 
 httpServer.listen(3000, () => {
   console.log("server is running on port 3000");
