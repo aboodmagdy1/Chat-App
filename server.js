@@ -16,6 +16,7 @@ io.onlineUsers = {};
 const { User } = require("./models/userModel.js");
 //static files
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.set("view engine", "ejs");
 app.set("views", "views");
 app.use(expressLayouts);
@@ -27,6 +28,7 @@ const authRouter = require("./routes/authRoutes");
 const profileRouter = require("./routes/profileRoutes.js");
 const friendsRouter = require("./routes/friendRoutes.js");
 const chatRouter = require("./routes/chatRoutes.js");
+const groupRouter = require("./routes/groupRoutes");
 
 //middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,6 +56,7 @@ app.use("/", authRouter);
 app.use("/profile", profileRouter);
 app.use("/friend", friendsRouter);
 app.use("/chat", chatRouter);
+app.use("/group", groupRouter);
 
 //unhandled routes
 app.all("*", (req, res, next) => {

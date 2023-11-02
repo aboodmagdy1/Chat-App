@@ -5,6 +5,6 @@ const {getChat}= require('../controllers/chatController')
 const router = express.Router();
 
 router.use(isAuth);
-router.get("/:id", getChat);
+router.get("/:chatId", getChat);
 
 module.exports = router;

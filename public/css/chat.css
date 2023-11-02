@@ -54,12 +54,14 @@ body {
 }
 
 .my-message {
-  background-color: #DCF8C6; /* Your message bubble color */
+  background-color: #3498db; /* Blue background for your messages */
+  color: white;
   align-self: flex-end;
 }
 
 .friend-message {
-  background-color: #E1E1E1; /* Friend's message bubble color */
+  background-color: #e0e0e0; /* Gray background for friend's messages */
+  color: #333;
   align-self: flex-start;
 }
 
@@ -88,4 +90,10 @@ body {
 
 #sendBtn:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+.group-image {
+  width: 50px; /* Set the desired width */
+  height: 50px; /* Set the desired height */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 50%; /* Make it a circle by setting border-radius to 50% */
 }

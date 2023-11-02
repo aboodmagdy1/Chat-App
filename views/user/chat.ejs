@@ -2,10 +2,14 @@
 
 <div class="row">
   <input type="hidden" id="chatId" value="<%= chatId %>" />
+  <!-- ... -->
+  <% friendsData.forEach((friend) => { %>
   <div class="col col-12 col-md-3">
-    <img src="/imgs/<%=friendData.image%>" alt="" class="user-image" /> <br />
-    <a href="/profile/<%= friendData.id %>"> <%= friendData.username %></a>
+    <img src="/imgs/<%= friend.image %>" alt="" class="user-image" /> <br />
+    <a href="/profile/<%= friend.id %>"> <%= friend.username %></a>
   </div>
+  <% }) %>
+  <!-- ... -->
   <div class="co col-12 col-md-9 messages">
     <div id="messages-container">
       <% messages.forEach(message => { %>

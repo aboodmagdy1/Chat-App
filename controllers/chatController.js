@@ -4,12 +4,13 @@ const { getChatUsers } = require("../models/chatModel");
 const asyncHandler = require("express-async-handler");
 //@desc display private chat data 
 exports.getChat = asyncHandler(async (req, res, next) => {
-  const chatId = req.params.id;
+  const chatId = req.params.chatId 
+
   getMessages(chatId).then((messages) => {
     //if there is no messages in the chat
     if (messages.length === 0) {
       getChatUsers(chatId).then((chat) => {
-        let friendData = chat.users.find(
+        let friendsData = chat.users.find(
           (user) => user._id != req.session.userId
         );
         res.render("user/chat", {
@@ -18,7 +19,7 @@ exports.getChat = asyncHandler(async (req, res, next) => {
           friendRequests: req.friendRequests,
           messages: messages,
           //git my frind data using the fris message document if it exist
-          friendData: friendData,
+          friendsData: friendsData,
           chatId : chatId
         });
       });

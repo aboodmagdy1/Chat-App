@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/css/chat.css">
+
+
+<div class="container mt-5">
+  <h1>My Groups</h1>
+  <% if (groups.length > 0) { %>
+    <div class="list-group">
+      <% groups.forEach(group => { %>
+        <a href="/group/<%= group._id %>/chat" class="list-group-item list-group-item-action">
+          <img src="/uploads/<%= group.groupImage %>" class="img-fluid rounded-circle group-image" alt="<%= group.groupName %>">
+          <h5 class="mt-2"><%= group.groupName %></h5>
+        </a>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="alert alert-info">You are not a member of any groups yet.</p>
+  <% } %>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/sockets/init.js"></script>
+<script src="/js/sockets/chat.js"></script>
