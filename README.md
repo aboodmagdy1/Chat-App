@@ -4,13 +4,13 @@
 
 ## Key Features
 
-* Authentication and Authorization: 
+### Authentication and Authorization: 
   * Signup , Login and Logout 
 
-* real-time notifications:
+### real-time notifications:
 
 
-* Friends request Operations : 
+### Friends request Operations : 
   * Accept: 
   assume you received a friend request from any user :
    * add  this user to my frinds list  and delete him from my friendRequests
