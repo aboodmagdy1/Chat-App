@@ -18,8 +18,9 @@
 
 ### Real-time Notifications
 
-**Add Friend** : when a user click on add friend button to send friend Request - when the user is logged in he is in a unieque room to recive the friend request on it (socket.io) - the sender's data is added to the recipient's friend request list .
-
+**Add Friend** : when a user click on add friend button to send friend Request 
+- when the user is logged in he is in a unieque room to recive the friend request on it (socket.io) 
+- the sender's data is added to the recipient's friend request list .
 - the recipient's data is added to the sender's sent request list .
 
 ### Friends Request Operations
@@ -48,6 +49,18 @@ Friend request operations allow users to manage their friend requests effectivel
   - the friend data is deleted form user friends list
   - the user data is delted form the this friend friends list
   - the chats and messages are deleted
+
+
+## Demonstration 🖥️
+#### Signup , Login ,Logout Pages :
+  <img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/videos/auth.gif" alt="Chat App" width="900"  height="500" >
+
+#### Home Page and The Notifications and THe Profile Page :
+  <img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/videos/notification.gif" alt="Chat App" width="900"  height="500" >
+
+<!-- #### Friends Page and Operations  :
+  <img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/videos/notification.gif" alt="Chat App" width="900"  height="500" > -->
+
 
 ## Getting Started
 
