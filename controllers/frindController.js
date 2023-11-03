@@ -34,7 +34,6 @@ exports.cancelRequest = asyncHandler(async (req, res, next) => {
       },
     }
   );
-  //2- delete my data form frindRequests of the user(friend)
   await User.updateOne(
     { _id: friendId },
     { $pull: { friendRequests: { id: myId } } }
@@ -51,8 +50,7 @@ exports.acceptRequst = asyncHandler(async (req, res, next) => {
   let newChat = await Chat.create({
     users: [myId, friendId],
   }); //create a new chat between me and the user an pass the id
-  //if i accept frind req from a user
-  //1- add  this user to my frinds  and delete him from my friendRequests
+
   await User.updateOne(
     { _id: myId },
     {
@@ -69,7 +67,7 @@ exports.acceptRequst = asyncHandler(async (req, res, next) => {
       },
     }
   );
-  //2- add me to this user frinds and delete me from his sentRequests
+
   await User.updateOne(
     { _id: friendId },
     {
@@ -93,8 +91,7 @@ exports.acceptRequst = asyncHandler(async (req, res, next) => {
 
 exports.rejectRequst = asyncHandler(async (req, res, next) => {
   const { myId, myName, myImage, friendId, userName, userImage } = req.body;
-  //if i reject frind req from a user
-  //1- delete user data from my friendRequests
+
   await User.updateOne(
     { _id: myId },
     {
@@ -103,7 +100,7 @@ exports.rejectRequst = asyncHandler(async (req, res, next) => {
       },
     }
   );
-  //2- delet my data form sentRequests of the user(friend)
+
   await User.updateOne(
     { _id: friendId },
     { $pull: { sentRequests: { id: myId } } }
@@ -117,8 +114,7 @@ exports.rejectRequst = asyncHandler(async (req, res, next) => {
 // @access protected
 exports.deleteFriend = asyncHandler(async (req, res, next) => {
   const { myId, myName, myImage, friendId, userName, userImage } = req.body;
-  //if i delete delete frinds
-  //1- delete user data from my frinds
+
   await User.updateOne(
     { _id: myId },
     {
@@ -127,7 +123,7 @@ exports.deleteFriend = asyncHandler(async (req, res, next) => {
       },
     }
   );
-  //2- delet my data form frinds of the user(friend)
+
   await User.updateOne({ _id: friendId }, { $pull: { friends: { id: myId } } });
 
   res.redirect("/profile/" + friendId);

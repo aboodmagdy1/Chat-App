@@ -1,35 +1,47 @@
-<h1 align="center">
-  <br>
-  <a href="https://lakshman-natours.herokuapp.com/"><img src="https://github.com/aboodmagdy1/Frinds-Chat-/blob/main/public/imgs/chat-app.png" alt="Natours" width="200"></a>
-  <br>
-  Advanced SSR Real-time Chat App
+# Chat Application
 
-  <br>
-</h1>
+- server-side rendering  chat application  built on [NodeJs](https://nodejs.org) and [Socket.io](https://socket.io)
 
-<h4 align="center">An awesome chat app  built on top of <a href="https://nodejs.org/en/" target="_blank">NodeJS</a> , <a href="https://socket.io/" target="_blank"> Socket.io</a> .</h4>
+## Key Features
 
-## Key Features 📝
+* Authentication and Authorization: 
+  * Signup , Login and Logout 
 
-* Authentication and Authorization
-  - Sign up, Log in, Logout.
-* Real-time Notifications for Friend Requests 
-   - Add Friend 
-* Friend requests 
-  - Accept , Reject , Cancel Request 
-  - Delete Friend 
+* real-time notifications:
+  * addFriend : 
+  this requset send a friend request to specific user  when ever i click the addFriend button the user will be notified 
+  i make this feture with socket.io  
+
+* Friends request Operations : 
+  * Accept: 
+  assume you received a friend request from any user :
+   -  1) add  this user to my frinds list  and delete him from my friendRequests
+   -  2) add myData to this user frinds list and delete myData from his sentRequests
+   
+  * Reject : 
+   -  1) delete user data from my friendRequests
+   -  2) delete myData from user sentRequests 
+
+   assume i sent a friend request to user 
+  * Cancel :  
+   -  1) delete user data from my sentRequests
+   -  2) delete myData from user friendRequests 
 
 
-## Build With 🏗️
+
+## Technologies Used
+
 * [NodeJS](https://nodejs.org/en/) - JS runtime environment
 * [Express](http://expressjs.com/) - The web framework used
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
-* [Bootstrap ](https://getbootstrap.com/) - Bootstrap 
-* [Socket.io](https://socket.io)-real time comunication 
+* [Bootstrap](https://getbootstrap.com/) - Bootstrap
 
+## Getting Started
 
-<h5>Still in progress</h5>
+Provide instructions on how to get a copy of your project up and running on a local machine.
 
+### Prerequisites
 
+What things the user needs to install the software and how to install them.
 
