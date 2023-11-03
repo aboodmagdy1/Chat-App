@@ -1,14 +1,15 @@
 # Chat App
 
 - server side rendering realtime chat application buit on [NodeJs](https://nodejs.org) and [Socket.io](https://socket.io)
-<h1 align="center">
-  <br>
-<img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/imgs/chat-app.png" alt="Chat App" width="200">
-  <br>
- Realtime Chat App
+  <h1 align="center">
+    <br>
+  <img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/imgs/chat-app.png" alt="Chat App" width="200">
+    <br>
+   Realtime Chat App
 
-  <br>
-</h1>
+    <br>
+  </h1>
+
 ## Key Features
 
 ### Authentication and Authorization
@@ -17,8 +18,9 @@
 
 ### Real-time Notifications
 
-**Add Friend** : when a user click on add friend button to send friend Request - when the user is logged in he is in a unieque room to recive the friend request on it (socket.io) - the sender's data is added to the recipient's friend request list .  
- - the recipient's data is added to the sender's sent request list .
+**Add Friend** : when a user click on add friend button to send friend Request - when the user is logged in he is in a unieque room to recive the friend request on it (socket.io) - the sender's data is added to the recipient's friend request list .
+
+- the recipient's data is added to the sender's sent request list .
 
 ### Friends Request Operations
 
