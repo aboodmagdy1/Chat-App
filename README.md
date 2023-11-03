@@ -26,6 +26,7 @@
 * [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
 * [Bootstrap ](https://getbootstrap.com/) - Bootstrap 
+* [Socket.io](https://socket.io)-real time comunication 
 
 
 <h5>Still in progress</h5>
