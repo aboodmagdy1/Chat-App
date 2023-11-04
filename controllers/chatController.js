@@ -13,6 +13,9 @@ exports.getChat = asyncHandler(async (req, res, next) => {
         let friendsData = chat.users.find(
           (user) => user._id != req.session.userId
         );
+        if(!Array.isArray(friendsData)){
+          friendsData = [friendsData]
+        }
         res.render("user/chat", {
           title: "Chat",
           isLogged: req.session.userId,

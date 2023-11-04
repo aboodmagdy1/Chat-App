@@ -55,6 +55,9 @@ exports.getMyGroups = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc  get  group
+// @route Get /group/id/chat
+// @access protected
 exports.getGroupChat = asyncHandler(async (req, res, next) => {
   const groupId = req.params.id;
   const group = await Group.findOne({ _id: groupId }, { chatId: true });

@@ -80,6 +80,7 @@ require("./sockets/friendSocket.js")(io); //if i add this line to the next middl
 require("./sockets/initSocket.js")(io);
 require("./sockets/chatSocket.js")(io);
 
-httpServer.listen(3000, () => {
+const port = process.env.PORT || 3000;
+httpServer.listen(process.env.PORT, () => {
   console.log("server is running on port 3000");
 });
