@@ -14,15 +14,16 @@
 
 ### Authentication and Authorization
 
-- **Signup, Login, and Logout**: Users can create an account, log in to their account, and log out when they are done.
+- **Signup, Login, and Logout**:
+  -  Users can create an account, log in to their account, and log out when they are done.
 
 ### Real-time Notifications
 
-**Add Friend** : when a user click on add friend button to send friend Request
+- **Add Friend**: when a user click on add friend button to send friend Request:
 
-- when the user is logged in he is in a unieque room to recive the friend request on it (socket.io)
-- the sender's data is added to the recipient's friend request list .
-- the recipient's data is added to the sender's sent request list .
+  - when the user is logged in he is in a unieque room to recive the friend request on it (socket.io)
+  - the sender's data is added to the recipient's friend request list .
+  - the recipient's data is added to the sender's sent request list .
 
 ### Friends Request Operations
 
@@ -54,24 +55,24 @@ Friend request operations allow users to manage their friend requests effectivel
 ### Real-time Private Chat and Messages :
 
 - **getChat**
-- we explain before that when user accept friend request we create a chat to them
-- so when user click on the chat button he joined this chat room
-- when send btn is clicked a new message is created in DB and send to the client socket to apper in the fron
-- every user have a unique color for him to can distinguish between senders
+  - we explain before that when user accept friend request we create a chat to them
+  - so when user click on the chat button he joined this chat room
+  - when send btn is clicked a new message is created in DB and send to the client socket to apper in the fron
+  - every user have a unique color for him to can distinguish between senders
 
 ### Real-time Group Chat and Groups :
 
 - **getCreatePage,createGroup**
-- user can create a group chat by adding name ,images and group members form his frineds
-- when user click on the create Group btn we create a chat for this group .
-- the chat is only for group member and have a unique id
+  - user can create a group chat by adding name ,images and group members form his frineds
+  - when user click on the create Group btn we create a chat for this group .
+  - the chat is only for group member and have a unique id
 
 - **getMyGroups**
-- page to display all user groups that belongs to or created by him
+  - page to display all user groups that belongs to or created by him
 
 - **getGroupChat**
-- To get the chat of a specific group and messages
-- each member have it's own color .i made it because this is a backend project so i use it to distinguish between users
+  - To get the chat of a specific group and messages
+  - each member have it's own color .i made it because this is a backend project so i use it to distinguish between users
 
 ## Demonstration 🖥️
 
@@ -96,10 +97,10 @@ Friend request operations allow users to manage their friend requests effectivel
   <img src="https://github.com/aboodmagdy1/Chat-App/blob/main/public/videos/groups.gif" alt="group img" width="900"  height="500" >
 
 
-## To do 
-- make admin for group 
-- delete group if user is the admin
-- leave group if user is a member not admin 
+## To do :
+  - make admin for group 
+  - delete group if user is the admin
+  - leave group if user is a member not admin 
 
 ## Getting Started
 1. Clone the repository to your local machine.
@@ -111,11 +112,11 @@ Friend request operations allow users to manage their friend requests effectivel
   $ npm i
     Strat work
   $ npm start 
-
+  ```
 3. Configure the project settings.
-- just in the .env file add this :
-- DB_URI  : you DB URI
-- PORT : as you like (say 3000) 
+  - just in the .env file add this :
+  - DB_URI  : you DB URI
+  - PORT : as you like (say 3000) 
 
 4. Run the project locally.
 
