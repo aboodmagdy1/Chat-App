@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: { type: String },
-  confirmPassword: { type: String },
   image: { type: String, default: "default-profile-picture1.jpg" },
   isOnline: { type: Boolean, default: false },
   friends: {

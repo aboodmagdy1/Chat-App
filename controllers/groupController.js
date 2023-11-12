@@ -1,8 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const { getMyFriends } = require("../models/userModel");
 const { Group, getUserGroups } = require("../models/groupModel");
-const { getMessages } = require("../models/messageModel");
-const { Chat, getChatUsers } = require("../models/chatModel");
+const { Message } = require("../models/messageModel");
+const  Chat = require("../models/chatModel");
 
 // @desc get create group page
 // @route Get /group/create
@@ -63,9 +63,8 @@ exports.getGroupChat = asyncHandler(async (req, res, next) => {
   const group = await Group.findOne({ _id: groupId }, { chatId: true });
   const chatId = group.chatId;
   // Fetch the messages for the chat
-  const messages = await getMessages(chatId);
-
- const chat = await getChatUsers(chatId)//return chat
+  const messages = await Message.find({chat:chatId})
+ const chat = await Chat.findOne({_id:chatId}).populate('users')
  const friendsData = chat.users
   // Render the chat page with the messages and other necessary data
   res.render("user/chat", {

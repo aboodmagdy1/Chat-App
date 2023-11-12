@@ -12,31 +12,12 @@ const messageSchema = new mongoose.Schema(
 
 const Message = mongoose.model("Message", messageSchema);
 
-const getMessages = async (chatId) => {
+const newMessage = async (msg) => {
   try {
-    let messages = await Message.find({ chat: chatId },null,{sort:{timestamps:-1}}).populate({
-      path: "chat",
-      model: "Chat",
-      populate: {
-        path: "users",
-        model: "User",
-        select: "username image",
-      }
-    });
-
-    return messages;
+    let newMsg = await Message.create(msg);
+    return;
   } catch (err) {
     throw new Error(err);
   }
 };
-const newMessage = async(msg)=>{
-  try{
-    let newMsg= await Message.create(msg)
-
-    return 
-  }catch(err){
-    throw new Error(err)
-  }
-}
-
-module.exports = { Message, getMessages ,newMessage};
+module.exports = { Message, newMessage };
